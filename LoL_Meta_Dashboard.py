@@ -13,7 +13,9 @@ import dash
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
+
 app = dash.Dash(__name__)
+server = app.server
 
 pick_grouped = pd.read_csv("pick_grouped.csv", index_col="patch")
 ban_grouped = pd.read_csv("ban_grouped.csv", index_col="patch")
@@ -204,5 +206,5 @@ def generate_presence_graphs(champ, pct, kpi):
     return fig2, fig3
 
 if __name__ == "__main__":
-    app.run_server(debug=True, jupyter_mode="external")
+    app.run_server(debug=False)
 
